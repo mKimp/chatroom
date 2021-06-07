@@ -2,6 +2,7 @@ package com.chatroomexample.chatroom.Controller;
 
 import com.chatroomexample.chatroom.Model.ChatForm;
 import com.chatroomexample.chatroom.Services.MessageService;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,11 +25,11 @@ public class ChatController {
         return "chat";
     }
     @PostMapping
-    public String postChatRoom(@ModelAttribute("messageForm") ChatForm messageForm, Model model){
+    public String postChatRoom(Authentication authentication, @ModelAttribute("messageForm") ChatForm messageForm, Model model){
+        messageForm.setUserName(authentication.getName());
         this.messageService.addMessage(messageForm);
-        model.addAttribute("chatMessages", this.messageService.getList());
         messageForm.setUserMessage("");
-        messageForm.setUserName("");
+        model.addAttribute("chatMessages", this.messageService.getList());
         return "chat";
     }
 
