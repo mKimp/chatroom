@@ -1,16 +1,16 @@
 package com.chatroomexample.chatroom.Model;
 
 public class ChatMessage {
+    private Integer messageId;
     private String username;
-    private String message;
-    private String messageType;
+    private String messagetext;
 
-    public String getMessageType() {
-        return messageType;
+    public Integer getMessageId() {
+        return messageId;
     }
 
-    public void setMessageType(String messageType) {
-        this.messageType = messageType;
+    public void setMessageId(Integer messageId) {
+        this.messageId = messageId;
     }
 
     public String getUsername() {
@@ -21,11 +21,11 @@ public class ChatMessage {
         this.username = username;
     }
 
-    public String getMessage() {
-        return message;
+    public String getMessageText() {
+        return messagetext;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setMessageText(String messageText) {
+        this.messagetext = messageText;
     }
 }

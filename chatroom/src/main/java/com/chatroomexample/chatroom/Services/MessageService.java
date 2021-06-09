@@ -14,6 +14,10 @@ public class MessageService {
 
     private MessageMapper messageMapper;
 
+    public MessageService(MessageMapper messageMapper) {
+        this.messageMapper = messageMapper;
+    }
+
     @PostConstruct
     public void postConstruct() {
         System.out.println("Creating MessageService bean");
@@ -23,13 +27,13 @@ public class MessageService {
         newMessage.setUsername(chatForm.getUserName());
         switch (chatForm.getMessageType()){
             case "Say":
-                newMessage.setMessage(chatForm.getUserMessage());
+                newMessage.setMessageText(chatForm.getUserMessage());
                 break;
             case "Shout":
-                newMessage.setMessage(chatForm.getUserMessage().toUpperCase());
+                newMessage.setMessageText(chatForm.getUserMessage().toUpperCase());
                 break;
             case "Whisper":
-                newMessage.setMessage(chatForm.getUserMessage().toLowerCase());
+                newMessage.setMessageText(chatForm.getUserMessage().toLowerCase());
                 break;
 
         }
